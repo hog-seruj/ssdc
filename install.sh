@@ -2,12 +2,20 @@
 
 source .env
 
-mv src/themes/projectname_theme src/themes/$THEME_NAME
+# mv src/themes/projectname_theme src/themes/${THEME_NAME}
+# cd src/themes/${THEME_NAME}
 
-cp src/themes/$THEME_NAME/projectname_theme.info.yml src/themes/$THEME_NAME/$THEME_NAME.info.yml
+# mv projectname_theme.info.yml ${THEME_NAME}.info.yml
+# mv projectname_theme.libraries.yml ${THEME_NAME}.libraries.yml
+# mv config/install/projectname_theme.settings.yml config/install/${THEME_NAME}.settings.yml
 
-cp src/themes/$THEME_NAME/projectname_theme.libraries.yml src/themes/$THEME_NAME/$THEME_NAME.libraries.yml
+cd src/themes/${THEME_NAME}
 
-cp src/themes/$THEME_NAME/config/install/projectname_theme.settings.yml src/themes/$THEME_NAME/config/install/$THEME_NAME.settings.yml
+for i in *${THEME_NAME}*; do
+  # mv "$i" "${i/projectname_theme/${THEME_NAME}}"
+  newName = $(sed "s/projectname_theme/${THEME_NAME}/")
+  echo newName
+done
 
-make
+# cd -
+# make
